@@ -1,0 +1,42 @@
+{
+  "version": 1,
+
+  "campaign": {
+    "active": false,
+    "label": "NEW DROP",
+    "title": "Strawberry Lychee Energy",
+    "subtitle": "Available now at advanced.gg",
+    "override_discount": true,
+    "override_code": "",
+    "override_percent": "",
+    "override_message": "NEW Strawberry Lychee Energy — Use code {code} at advanced.gg",
+    "start": null,
+    "end": null
+  },
+
+  "defaults": {
+    "percent": "10",
+    "site_tag": "ADVANCED.GG"
+  },
+
+  "shakers": [
+    "https://cdn.shopify.com/s/files/1/0459/6036/4189/files/ADV-Street-Series-Design-ToxicNeon.png?v=1755895917",
+    "https://cdn.shopify.com/s/files/1/0459/6036/4189/files/Product-Renders-Teal-Shaker-01_1.png?v=1762534374",
+    "https://cdn.shopify.com/s/files/1/0459/6036/4189/files/Product-Renders-Black-Shaker-01_85bcf5df-805c-47ba-9b03-2a57ad7afa35.png?v=1743778344",
+    "https://cdn.shopify.com/s/files/1/0459/6036/4189/files/Product-Renders-ColorChange-ORNG-YLLW-01_25fa7e00-a4bc-4db6-b587-960efba1cd10.png?v=1743778439"
+  ],
+
+  "jars": [
+    "https://cdn.shopify.com/s/files/1/0459/6036/4189/files/Layer-38_0004_Layer-42.png?v=1762532534",
+    "https://cdn.shopify.com/s/files/1/0459/6036/4189/files/Layer-99_0019_Layer-118.webp?v=1773942995",
+    "https://cdn.shopify.com/s/files/1/0459/6036/4189/files/ADV-Energy-Strawberry-Peach-01.png?v=1762532558",
+    "https://cdn.shopify.com/s/files/1/0459/6036/4189/files/E-RP-01_a2906114-66bd-46f1-8a28-c81192fabbf5.png?v=1750880220",
+    "https://cdn.shopify.com/s/files/1/0459/6036/4189/files/ML-01.png?v=1762535040",
+    "https://cdn.shopify.com/s/files/1/0459/6036/4189/files/LR-01_14c58ab4-4ac1-4156-aa73-e3122a39a558.png?v=1743179425"
+  ],
+
+  "timing": {
+    "interval_minutes": 7,
+    "duration_seconds": 15
+  }
+}
