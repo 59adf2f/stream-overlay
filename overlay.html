@@ -6,20 +6,20 @@
 <title>ADVANCED.GG Stream Overlay</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@500;600;700&family=Orbitron:wght@500;700;900&display=swap');
-
+ 
   *{margin:0;padding:0;box-sizing:border-box}
   body{background:transparent;overflow:hidden;width:100vw;height:100vh;font-family:'Rajdhani',sans-serif}
-
+ 
   :root{--c1:#00f0ff;--c2:#ff3864;--accent:rgba(0,240,255,.3);--glow:rgba(0,240,255,.15);--cbg:rgba(0,240,255,.12);--cbr:rgba(0,240,255,.4)}
   body.theme-green{--c1:#00ff88;--c2:#00f0ff;--accent:rgba(0,255,136,.3);--glow:rgba(0,255,136,.15);--cbg:rgba(0,255,136,.12);--cbr:rgba(0,255,136,.4)}
   body.theme-purple{--c1:#b44aff;--c2:#ff3864;--accent:rgba(180,74,255,.3);--glow:rgba(180,74,255,.15);--cbg:rgba(180,74,255,.12);--cbr:rgba(180,74,255,.4)}
   body.theme-gold{--c1:#ffd700;--c2:#ff8c00;--accent:rgba(255,215,0,.3);--glow:rgba(255,215,0,.15);--cbg:rgba(255,215,0,.12);--cbr:rgba(255,215,0,.4)}
-
+ 
   .anchor{position:fixed;bottom:20px;left:20px;z-index:100}
   body.pos-br .anchor{left:auto;right:20px}
   body.pos-tl .anchor{top:20px;bottom:auto}
   body.pos-tr .anchor{left:auto;right:20px;top:20px;bottom:auto}
-
+ 
   .wrap{
     position:relative;
     transform:translateX(-140%);opacity:0;filter:blur(6px);
@@ -32,19 +32,19 @@
     transition:transform .6s cubic-bezier(.7,0,.84,0),opacity .45s ease,filter .45s ease;
   }
   body.pos-br .wrap.out,body.pos-tr .wrap.out{transform:translateX(140%)!important}
-
+ 
   .card{
     position:relative;
     display:flex;
     align-items:stretch;
     background:linear-gradient(135deg,rgba(6,6,16,.96),rgba(10,10,28,.96) 60%,rgba(6,6,16,.96));
-    border-radius:12px;
+    border-radius:14px;
     border:1.5px solid var(--accent);
     overflow:hidden;
   }
-
+ 
   .card::before{
-    content:'';position:absolute;inset:-1px;border-radius:13px;padding:1.5px;
+    content:'';position:absolute;inset:-1px;border-radius:15px;padding:1.5px;
     background:conic-gradient(from var(--a,0deg),transparent 35%,var(--c1) 48%,var(--c2) 55%,transparent 68%);
     -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
     mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
@@ -53,106 +53,96 @@
   }
   @keyframes spin{to{--a:360deg}}
   @property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
-
+ 
   .card::after{
     content:'';position:absolute;top:0;left:20%;right:10%;height:1px;
     background:linear-gradient(90deg,transparent,var(--c1),transparent);opacity:.5;z-index:10;
   }
-
-  .particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:12px;z-index:0}
+ 
+  .particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:14px;z-index:0}
   .pt{position:absolute;background:var(--c1);border-radius:50%;opacity:0;animation:fp 3.5s ease-in-out infinite}
   @keyframes fp{0%{opacity:0;transform:translateY(0) scale(0)}15%{opacity:.15;transform:scale(1)}100%{opacity:0;transform:translateY(-60px) scale(0)}}
-
+ 
   /* ===== PRODUCT ===== */
   .prod-area{
-    width:90px;
+    width:120px;
     flex-shrink:0;
     display:flex;
     align-items:center;
     justify-content:center;
     position:relative;
-    padding:8px 0 8px 10px;
+    padding:10px 0 10px 12px;
   }
-
+ 
   .prod-area .glow{
-    position:absolute;width:70px;height:70px;border-radius:50%;
+    position:absolute;width:90px;height:90px;border-radius:50%;
     background:radial-gradient(circle,var(--glow) 0%,transparent 70%);
     animation:pg 3s ease-in-out infinite;pointer-events:none;
   }
   @keyframes pg{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:.5;transform:scale(1.05)}}
-
-  /* Container for stacked absolute images */
+ 
   #ps{
     position:relative;
-    width:75px;height:90px;
+    width:95px;height:115px;
     display:flex;align-items:center;justify-content:center;
   }
-
-  /*
-    Product images: stacked via position:absolute.
-    Crossfade is ONLY opacity. No transform on transition
-    to avoid fighting with the bob animation.
-    The bob runs continuously on all images (visible or not)
-    so there's no snap when classes change.
-  */
+ 
   .prod-img{
     position:absolute;
-    max-width:75px;max-height:88px;
+    max-width:95px;max-height:112px;
     width:auto;height:auto;
     object-fit:contain;
-    filter:drop-shadow(0 3px 8px rgba(0,0,0,.5)) drop-shadow(0 0 6px var(--glow));
+    filter:drop-shadow(0 3px 10px rgba(0,0,0,.5)) drop-shadow(0 0 8px var(--glow));
     z-index:1;
     opacity:0;
     transition:opacity 1.2s ease;
     animation:prodBob 4s ease-in-out infinite;
   }
-
-  .prod-img.visible{
-    opacity:1;
-  }
-
+ 
+  .prod-img.visible{opacity:1}
+ 
   @keyframes prodBob{
     0%,100%{transform:translateY(0) rotate(-1deg)}
     50%{transform:translateY(-5px) rotate(1deg)}
   }
-
+ 
   /* ===== TEXT ===== */
   .text-area{
     flex:1;min-width:0;
-    padding:12px 16px 10px 8px;
+    padding:16px 20px 14px 10px;
     position:relative;z-index:2;
     display:flex;flex-direction:column;justify-content:center;
   }
-
-  .logo{display:flex;align-items:center;margin-bottom:6px;position:relative}
-  .logo img{height:18px;width:auto;object-fit:contain;filter:drop-shadow(0 0 8px var(--glow))}
+ 
+  .logo{display:flex;align-items:center;margin-bottom:8px;position:relative}
+  .logo img{height:24px;width:auto;object-fit:contain;filter:drop-shadow(0 0 8px var(--glow))}
   .logo .gw{
-    position:absolute;top:50%;left:0;width:50px;height:25px;
+    position:absolute;top:50%;left:0;width:60px;height:30px;
     background:radial-gradient(ellipse,var(--glow) 0%,transparent 70%);
     transform:translateY(-50%);pointer-events:none;animation:lp 2.5s ease-in-out infinite;
   }
   @keyframes lp{0%,100%{opacity:.3;transform:translateY(-50%) scale(1)}50%{opacity:.7;transform:translateY(-50%) scale(1.1)}}
-
+ 
   .cmp{
     background:linear-gradient(135deg,rgba(255,56,100,.1),rgba(255,56,100,.03));
-    border:1px solid rgba(255,56,100,.2);border-radius:5px;padding:5px 8px;margin-bottom:6px;
+    border:1px solid rgba(255,56,100,.2);border-radius:6px;padding:6px 10px;margin-bottom:8px;
     opacity:0;transform:translateY(-3px);animation:ci .3s ease forwards;
   }
   @keyframes ci{to{opacity:1;transform:translateY(0)}}
-  .cmp .dot{display:inline-block;width:5px;height:5px;background:#ff3864;border-radius:50%;margin-right:4px;animation:pu 1.2s infinite;vertical-align:middle}
+  .cmp .dot{display:inline-block;width:6px;height:6px;background:#ff3864;border-radius:50%;margin-right:5px;animation:pu 1.2s infinite;vertical-align:middle}
   @keyframes pu{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,56,100,.4)}50%{opacity:.5;box-shadow:0 0 0 3px rgba(255,56,100,0)}}
-  .cmp .cl{font-family:'Orbitron',sans-serif;font-size:7px;letter-spacing:2px;color:#ff3864;text-transform:uppercase;margin-bottom:1px}
-  .cmp .ct{font-family:'Bebas Neue',sans-serif;font-size:16px;color:#fff;letter-spacing:.5px;line-height:1.1}
-  .cmp .cs{font-size:9px;color:rgba(255,255,255,.4);margin-top:1px}
-
-  .disc-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-  .disc-row .lb{font-weight:600;font-size:14px;color:rgba(255,255,255,.8)}
+  .cmp .cl{font-family:'Orbitron',sans-serif;font-size:8px;letter-spacing:2.5px;color:#ff3864;text-transform:uppercase;margin-bottom:2px}
+  .cmp .ct{font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;letter-spacing:.5px;line-height:1.1}
+  .cmp .cs{font-size:11px;color:rgba(255,255,255,.4);margin-top:2px}
+ 
+  .disc-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+  .disc-row .lb{font-weight:600;font-size:17px;color:rgba(255,255,255,.8)}
   .disc-row .cb{
     display:inline-block;
     background:linear-gradient(135deg,var(--cbg),rgba(0,0,0,.1));
-    border:1px solid var(--cbr);border-radius:4px;padding:1px 8px;
-    font-family:'Orbitron',sans-serif;font-weight:700;font-size:15px;
-    color:var(--c1);letter-spacing:1.5px;
+    border:1px solid var(--cbr);border-radius:5px;padding:2px 10px;
+    font-family:'Orbitron',sans-serif;font-weight:700;font-size:18px;
+    color:var(--c1);letter-spacing:2px;
     text-shadow:0 0 10px var(--glow);
     position:relative;overflow:hidden;
   }
@@ -162,11 +152,11 @@
     animation:sh 2.5s ease-in-out infinite;
   }
   @keyframes sh{0%{left:-100%}100%{left:200%}}
-  .disc-row .pct{font-family:'Bebas Neue',sans-serif;font-size:17px;color:#ff3864;letter-spacing:.5px;text-shadow:0 0 8px rgba(255,56,100,.2)}
-
+  .disc-row .pct{font-family:'Bebas Neue',sans-serif;font-size:21px;color:#ff3864;letter-spacing:.5px;text-shadow:0 0 8px rgba(255,56,100,.2)}
+ 
   .support{
-    margin-top:4px;
-    font-size:11px;
+    margin-top:5px;
+    font-size:12px;
     font-weight:600;
     color:rgba(255,255,255,.35);
     letter-spacing:.3px;
@@ -175,35 +165,35 @@
     color:var(--c1);
     font-family:'Orbitron',sans-serif;
     font-weight:700;
-    font-size:10px;
+    font-size:11px;
     letter-spacing:1.5px;
     text-shadow:0 0 6px var(--glow);
   }
-
-  .om{font-weight:600;font-size:13px;color:rgba(255,255,255,.85);letter-spacing:.2px;line-height:1.35}
-  .om .ci{font-family:'Orbitron',sans-serif;font-weight:700;font-size:14px;color:var(--c1);letter-spacing:1px;text-shadow:0 0 8px var(--glow)}
-
+ 
+  .om{font-weight:600;font-size:16px;color:rgba(255,255,255,.85);letter-spacing:.2px;line-height:1.35}
+  .om .ci{font-family:'Orbitron',sans-serif;font-weight:700;font-size:17px;color:var(--c1);letter-spacing:1px;text-shadow:0 0 8px var(--glow)}
+ 
   .tb{
     position:absolute;bottom:0;left:0;height:2px;width:100%;
     background:linear-gradient(90deg,var(--c1),var(--c2));
-    border-radius:0 0 12px 12px;z-index:3;transform-origin:left;
+    border-radius:0 0 14px 14px;z-index:3;transform-origin:left;
   }
   .tb.on{animation:ts var(--dt,15s) linear forwards}
   @keyframes ts{from{transform:scaleX(1)}to{transform:scaleX(0)}}
 </style>
 </head>
 <body>
-
+ 
 <div class="anchor">
   <div class="wrap" id="wrap">
     <div class="card">
       <div class="particles" id="particles"></div>
-
+ 
       <div class="prod-area">
         <div class="glow"></div>
         <div id="ps"></div>
       </div>
-
+ 
       <div class="text-area">
         <div class="logo">
           <div class="gw"></div>
@@ -221,12 +211,12 @@
           <div class="support" id="support">Every purchase directly supports me · <span class="cmd">!ADV</span></div>
         </div>
       </div>
-
+ 
       <div class="tb" id="tb"></div>
     </div>
   </div>
 </div>
-
+ 
 <script>
 const P=new URLSearchParams(window.location.search);
 const CODE=(P.get('code')||'ADVANCED').toUpperCase();
@@ -235,10 +225,10 @@ const THEME=P.get('theme');
 const POS=P.get('position')||'bl';
 const ALWAYS=P.get('always')==='1';
 const TEST=P.get('test')==='1';
-
+ 
 if(THEME)document.body.classList.add('theme-'+THEME);
 if(POS!=='bl')document.body.classList.add('pos-'+POS);
-
+ 
 const FB_JARS=[
   "https://cdn.shopify.com/s/files/1/0459/6036/4189/files/Layer-38_0004_Layer-42.png?v=1762532534",
   "https://cdn.shopify.com/s/files/1/0459/6036/4189/files/Layer-99_0019_Layer-118.webp?v=1773942995",
@@ -253,13 +243,13 @@ const FB_SHAKERS=[
   "https://cdn.shopify.com/s/files/1/0459/6036/4189/files/Product-Renders-Black-Shaker-01_85bcf5df-805c-47ba-9b03-2a57ad7afa35.png?v=1743778344",
   "https://cdn.shopify.com/s/files/1/0459/6036/4189/files/Product-Renders-ColorChange-ORNG-YLLW-01_25fa7e00-a4bc-4db6-b587-960efba1cd10.png?v=1743778439"
 ];
-
+ 
 let cfg=null,intMs=7*60*1000,durMs=15*1000,cycle=null,campId=null,prodSwapTimer=null;
 const wrap=document.getElementById('wrap'),tb=document.getElementById('tb');
 const CFG=new URL('config.json',window.location.href).href;
-
+ 
 async function load(){try{const r=await fetch(CFG+'?t='+Date.now());if(r.ok){cfg=await r.json();apply()}}catch(e){}}
-
+ 
 function apply(){
   if(!cfg)return;
   const t=cfg.timing||{};
@@ -284,54 +274,29 @@ function apply(){
     document.getElementById('dd').style.display='flex';document.getElementById('ov').style.display='none';
   }
 }
-
+ 
 function isLive(c){if(!c||!c.active)return false;const n=Date.now();if(c.start&&n<new Date(c.start).getTime())return false;if(c.end&&n>new Date(c.end).getTime())return false;return true}
 function showCamp(c){document.getElementById('camp').innerHTML='<div class="cmp"><div class="cl"><span class="dot"></span>'+(c.label||'NEW DROP')+'</div><div class="ct">'+(c.title||'')+'</div>'+(c.subtitle?'<div class="cs">'+c.subtitle+'</div>':'')+'</div>'}
-
-/* ===== PRODUCT CROSSFADE =====
-   Strategy: pre-load ALL images into the DOM at slide-in,
-   stacked absolutely. Only toggle .visible class (opacity only).
-   The bob animation runs on ALL of them always, so there's
-   zero transform snap on swap. Pure clean crossfade.
-*/
-let prodEls=[];
-let currentProd=0;
-
+ 
+let prodEls=[],currentProd=0;
+ 
 function initProds(){
   const ps=document.getElementById('ps');
-  ps.innerHTML='';
-  prodEls=[];currentProd=0;
+  ps.innerHTML='';prodEls=[];currentProd=0;
   if(prodSwapTimer)clearInterval(prodSwapTimer);
-
-  const j=[...(cfg?.jars?.length?cfg.jars:FB_JARS)];
-  const s=[...(cfg?.shakers?.length?cfg.shakers:FB_SHAKERS)];
-  // Shuffle
+  const j=[...(cfg?.jars?.length?cfg.jars:FB_JARS)],s=[...(cfg?.shakers?.length?cfg.shakers:FB_SHAKERS)];
   for(let i=j.length-1;i>0;i--){const k=Math.floor(Math.random()*(i+1));[j[i],j[k]]=[j[k],j[i]]}
   for(let i=s.length-1;i>0;i--){const k=Math.floor(Math.random()*(i+1));[s[i],s[k]]=[s[k],s[i]]}
-  // Interleave
-  const pool=[];
-  const max=Math.max(j.length,s.length);
+  const pool=[],max=Math.max(j.length,s.length);
   for(let i=0;i<max;i++){if(i<j.length)pool.push(j[i]);if(i<s.length)pool.push(s[i])}
-
   if(!pool.length)return;
-
-  // Create all images upfront, all invisible
   pool.forEach((url,i)=>{
-    const img=new Image();
-    img.className='prod-img';
-    img.src=url;img.alt='';
+    const img=new Image();img.className='prod-img';img.src=url;img.alt='';
     img.onerror=function(){this.style.display='none'};
-    // Stagger the bob so they don't all sync
     img.style.animationDelay=(i*0.3)+'s';
-    ps.appendChild(img);
-    prodEls.push(img);
+    ps.appendChild(img);prodEls.push(img);
   });
-
-  // Show first
   prodEls[0].classList.add('visible');
-  currentProd=0;
-
-  // Swap every 5s
   prodSwapTimer=setInterval(()=>{
     const old=currentProd;
     currentProd=(currentProd+1)%prodEls.length;
@@ -339,22 +304,20 @@ function initProds(){
     prodEls[currentProd].classList.add('visible');
   },5000);
 }
-
+ 
 function stopProds(){if(prodSwapTimer){clearInterval(prodSwapTimer);prodSwapTimer=null}}
-
+ 
 function particles(){
   const c=document.getElementById('particles');c.innerHTML='';
   for(let i=0;i<10;i++){
     const d=document.createElement('div');d.className='pt';
-    d.style.left=(Math.random()*100)+'%';
-    d.style.bottom=(Math.random()*20)+'%';
-    d.style.animationDelay=(Math.random()*4)+'s';
-    d.style.animationDuration=(3+Math.random()*2)+'s';
+    d.style.left=(Math.random()*100)+'%';d.style.bottom=(Math.random()*20)+'%';
+    d.style.animationDelay=(Math.random()*4)+'s';d.style.animationDuration=(3+Math.random()*2)+'s';
     const s=1+Math.random()*1;d.style.width=d.style.height=s+'px';
     c.appendChild(d);
   }
 }
-
+ 
 function slideIn(){
   particles();initProds();
   tb.classList.remove('on');tb.style.setProperty('--dt',(durMs/1000)+'s');
@@ -364,7 +327,7 @@ function slideIn(){
 }
 function slideOut(){wrap.classList.remove('in');wrap.classList.add('out');tb.classList.remove('on');stopProds()}
 function resetCycle(){if(cycle)clearInterval(cycle);if(ALWAYS)return;cycle=setInterval(slideIn,TEST?(durMs/1000+3)*1000:intMs)}
-
+ 
 async function init(){
   await load();
   if(!cfg){document.getElementById('code').textContent=CODE;document.getElementById('pct').textContent=(PCT_OV||'10')+'% OFF'}
